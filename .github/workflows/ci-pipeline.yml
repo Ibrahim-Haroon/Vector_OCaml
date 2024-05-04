@@ -20,6 +20,7 @@ jobs:
       run: |
         opam pin add -n .
         opam depext -i -y --with-doc --with-test
+        chmod +x install_opam_packages.sh
         ./install_opam_packages.sh
         
     - name: Build
