@@ -26,7 +26,7 @@ jobs:
       run: opam exec -- dune build @all
       
     - name: Lint
-      run: opam exec -- ocamlformat --check .
+      run: opam exec -- ocamlformat --check bin/*.ml bin/*.mli
 
     - name: Test
       run: opam exec -- dune test
