@@ -33,6 +33,10 @@ let increase_capacity da =
 	da.capacity <- da.capacity * 2
 
 
+let add da item =
+	if is_full da then increase_capacity da
+	else da.buffer.(da.size) <- item
+
 
 
 
