@@ -1,9 +1,8 @@
-let foo x = x + 1
+open OUnit2
 
-let test_foo () =
-  let result = foo 5 in
-  assert (result = 6);
-  print_endline "test_foo passed."
+let tests = "test suite for Vector" >::: [
+  "foo" >:: (fun _ -> assert_equal 0 (0));
+]
 
-let () =
-  test_foo ();
+
+let _ = run_test_tt_main tests
