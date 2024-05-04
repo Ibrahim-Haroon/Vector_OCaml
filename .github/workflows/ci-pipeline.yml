@@ -7,11 +7,14 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-    ocaml-compiler:
-          - "5.1"
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Set-up OCaml
+        uses: ocaml/setup-ocaml@v2
+        with:
+          ocaml-compiler: "5.1"
 
     - name: Install Dependencies
       run: |
