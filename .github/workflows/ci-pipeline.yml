@@ -20,6 +20,7 @@ jobs:
       run: |
         opam pin add -n .
         opam depext -i -y --with-doc --with-test
+        opam install dune ocamlformat --yes
         
     - name: Build
       run: opam exec -- dune build @all
