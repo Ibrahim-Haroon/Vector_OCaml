@@ -1,8 +1,16 @@
+(* test_vector.ml *)
 open OUnit2
-
-let tests = "test suite for Vector" >::: [
-  "foo" >:: (fun _ -> assert_equal 0 (0));
-]
+open Vector
 
 
-let _ = run_test_tt_main tests
+let test_create _ =
+  let v = create () in
+  assert (length v = 0)
+
+let suite =
+  "TestVector" >::: [
+    "create" >:: test_create;
+  ]
+
+let () =
+  run_test_tt_main suite
