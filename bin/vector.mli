@@ -1,11 +1,12 @@
-(* dynamicArray.mli *)
+(* vector.mli *)
 
-type t
 
-val create : unit -> t
-val add : t -> int -> unit
-val get : t -> int -> int
-val set : t -> int -> int -> unit
-val is_empty: t -> bool
-val length : t -> int
-val print: t -> unit
+type 'a t
+
+val create : unit -> 'a t
+val add : 'a t -> 'a -> unit
+val get : 'a t -> int -> 'a
+val set : 'a t -> int -> 'a -> unit
+val is_empty : 'a t -> bool
+val length : 'a t -> int
+val print : 'a t -> unit -> unit
