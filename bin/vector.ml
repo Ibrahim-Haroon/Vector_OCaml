@@ -8,22 +8,8 @@ type 'a t = {
 }
 
 
-let intial_capcity = 10
-
-
-let create () = {
-	buffer = Array.make intial_capcity 0;
-	size = 0;
-	capacity = intial_capcity;
-}
-
-
 let is_full da =
 	da.size = da.capacity
-
-
-let is_empty da =
-	da.size = 0
 
 
 let increase_capacity da =
@@ -33,24 +19,32 @@ let increase_capacity da =
 	da.capacity <- da.capacity * 2
 
 
+let intial_capcity = 10
+
+
+let create () = {
+	buffer = Array.make intial_capcity 0;
+	size = 0;
+	capacity = intial_capcity;
+}
+
 let add da item =
 	if is_full da then increase_capacity da
 	else da.buffer.(da.size) <- item
 
 
+let get (idx: int) : int = failwith "Not implemented"
 
 
+let set (idx : int, item : 'a) : unit = failwith "Not implemented"
 
 
+let is_empty da =
+	da.size = 0
 
 
+let length (): int = failwith "Not implemented"
 
 
-
-
-
-
-
-
-
+let print () = failwith "Not implemented"
 
