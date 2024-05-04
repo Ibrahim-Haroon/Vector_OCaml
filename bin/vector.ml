@@ -1,4 +1,5 @@
 (* vector.ml *)
+open Printf
 
 
 type 'a t = {
@@ -43,11 +44,17 @@ let get da idx =
 	else da.buffer.(idx)
 
 
-let set (idx : int, item : 'a) : unit = failwith "Not implemented"
+let set da idx item =
+	if is_empty da then failwith "Empty vector"
+	else if idx < 0 || idx >= da.size then failwith "Out of bounds"
+	else da.buffer.(idx) <- item
 
 
-let length (): int = failwith "Not implemented"
+let length da =
+	da.size
 
 
-let print () = failwith "Not implemented"
+let print da () =
+	Array.iter (fun x -> printf "%d " x) da.buffer;
+	print_endline ""
 
