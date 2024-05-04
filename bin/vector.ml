@@ -1,5 +1,4 @@
 (* vector.ml *)
-open Printf
 
 
 type 'a t = {
@@ -14,7 +13,7 @@ let is_full da =
 
 
 let increase_capacity da =
-	let bigger_buffer = Array.make (da.capacity * 2) 0 in
+	let bigger_buffer = Array.make (da.capacity * 2) (Obj.magic 0) in
 	Array.blit da.buffer 0 bigger_buffer 0 da.size;
 	da.buffer <- bigger_buffer;
 	da.capacity <- da.capacity * 2
@@ -24,14 +23,15 @@ let intial_capcity = 10
 
 
 let create () = {
-	buffer = Array.make intial_capcity 0;
+	buffer = Array.make intial_capcity (Obj.magic 0);
 	size = 0;
 	capacity = intial_capcity;
 }
 
 let add da item =
-	if is_full da then increase_capacity da
-	else da.buffer.(da.size) <- item
+	if is_full da then increase_capacity da;
+	da.buffer.(da.size) <- item;
+	da.size <- da.size + 1
 
 
 let is_empty da =
@@ -52,9 +52,3 @@ let set da idx item =
 
 let length da =
 	da.size
-
-
-let print da () =
-	Array.iter (fun x -> printf "%d " x) da.buffer;
-	print_endline ""
-
