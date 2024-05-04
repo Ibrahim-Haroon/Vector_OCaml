@@ -1,0 +1,19 @@
+# Dune artifacts
+_build/
+*.install
+
+# OPAM files
+_opam/
+*.opam.locked
+
+# Merlin files
+.merlin
+
+# Compiled files
+*.cmi
+*.cmo
+*.cma
+*.cmx
+*.cmxa
+*.cmxs
+*.exe
