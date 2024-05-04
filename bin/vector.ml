@@ -33,14 +33,17 @@ let add da item =
 	else da.buffer.(da.size) <- item
 
 
-let get (idx: int) : int = failwith "Not implemented"
+let is_empty da =
+	da.size = 0
+
+
+let get da idx =
+	if is_empty da then failwith "Empty vector"
+	else if idx < 0 || idx >= da.size then failwith "Out of bounds"
+	else da.buffer.(idx)
 
 
 let set (idx : int, item : 'a) : unit = failwith "Not implemented"
-
-
-let is_empty da =
-	da.size = 0
 
 
 let length (): int = failwith "Not implemented"
